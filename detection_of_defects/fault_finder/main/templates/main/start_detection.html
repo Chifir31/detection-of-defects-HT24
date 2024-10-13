@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% block head %}
+
+{% endblock %}
+
+{% block left-block %}
+<form id="post_form" method="post" action="{% url 'upload' %}" enctype="multipart/form-data" class="form-container">
+    <h2>Обнаружение дефектов</h2>
+        {% csrf_token %}
+    <div class="form-group">
+        <label for="serialNumber">Серийный номер:</label>
+        <input type="text" id="serialNumber" name="serialNumber" required>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Выберите фотографии:</label>
+        <input type="file" multiple name="files" id="name" required>
+    </div>
+
+    <div class="form-group">
+        <button type="submit">Распознать дефекты</button>
+    </div>
+</form>
+
+{% endblock %}
+
+{% block right-block %}
+<h2>Может быть интересно</h2>
+<p>*Здесь должна быть какая-то статистика, но мы не успеваем*</p>
+{% endblock %}

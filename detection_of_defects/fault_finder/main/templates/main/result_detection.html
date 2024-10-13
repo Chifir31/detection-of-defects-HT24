@@ -1,0 +1,70 @@
+{% extends 'main/base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block left-block %}
+<div style="display:grid">
+    <div class="gallery">
+    <img id="photo-image" src="{{ photos.0.image.url }}" alt="{{ photos.0.id }}" class="photo" style="background-image: url('{{ photo.0.image.url }}'); height: 400px; background-size: cover;">
+    <div class="controls">
+            <button  id="prev-btn" class="transparent-button" style="left:10px">&#10094;</button>
+            <button  id="next-btn" class="transparent-button" style="right:10px">&#10095;</button>
+        </div>
+    </div>
+    <label class="result_lbl">Результат распознавания: {{ photos.0.predict }}</label>
+    </div>
+    <script>
+       let currentIndex = 0;
+const photos = [];
+
+// Заполнение массива photos данными из Django
+{% for photo in photos %}
+  photos.push({
+    id: {{ photo.id }},
+    url: '{{ photo.image.url }}',
+  });
+{% endfor %}
+
+function displayPhoto(index) {
+  const photo = photos[index];
+  const photoImage = document.getElementById('photo-image');
+  const photoIndex = document.getElementById('photo-index');
+
+  photoImage.src = photo.url;
+  photoImage.alt = photo.caption;
+  photoIndex.textContent = `${index + 1} of ${photos.length}`;
+}
+
+document.getElementById('prev-btn').addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+  displayPhoto(currentIndex);
+});
+
+document.getElementById('next-btn').addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % photos.length;
+  displayPhoto(currentIndex);
+});
+
+    </script>
+{% endblock %}
+
+{% block right-block %}
+<h2>Итоги проверки</h2>
+<p>Серийный номер: {{serial_number}}</p>
+<p>Всего фото загружено: {{count_photo}}</p>
+<p>Обнаружено дефектов: {{count_defects}}</p>
+{% if count_defects != 0 %}
+<br><p>Обнаруженные дефекты </p>
+    {% for key, value in defects.items %}
+    {% if value != 0 %}
+        <p>{{ key }}: {{ value }}</p>
+    {% endif %}
+    {% endfor %}
+{% endif %}
+<form method="post" action="{% url 'report' %}">
+    {% csrf_token %}
+<button type="submit">Сформировать отчет</button>
+</form>
+{% endblock %}
+

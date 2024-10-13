@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шапка и контент</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <div class="tabs">
+            <a href="https://sila.ru/ru" class="header_a">Главная</a>
+            <a href="/start_detection" class="header_a">Распознавание дефектов</a>
+        </div>
+        <div class="profile-icon">
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="left-block">
+            {% block left-block %}
+            {% endblock %}
+        </div>
+        <div class="right-block">
+            {% block right-block %}
+            {% endblock %}
+        </div>
+    </div>
+
+</body>
+</html>
