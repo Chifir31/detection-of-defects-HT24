@@ -14,7 +14,7 @@ Python, Django, RT-DETR, PyTorch.
 * Команда старалась разработать простой и приятный по восприятию дизайн, в соответствии стилю компании.
 
 Ссылка на Google Disk с моделью нейросети:<br>
-путь для модели detection_of_defects/fault_finder/main/deter_model/
+путь для модели detection_of_defects/fault_finder/main/deter_model/ <br>
 https://drive.google.com/drive/folders/18cQZmgAgnHS_Uj9hc3ucEu4Iuz4y6-Wk?usp=sharing
 
 Пример формируемого отчета:<br>
