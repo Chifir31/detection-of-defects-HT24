@@ -16,4 +16,7 @@ Python, Django, RT-DETR, PyTorch.
 Ссылка на Google Disk с моделью нейросети:<br>
 https://drive.google.com/drive/folders/18cQZmgAgnHS_Uj9hc3ucEu4Iuz4y6-Wk?usp=sharing
 
+Пример формируемого отчета:<br>
+https://drive.google.com/file/d/1ICEKATwwEdBsd-fv5u5C7NUmafpCJxLq/view?usp=sharing
+
 
